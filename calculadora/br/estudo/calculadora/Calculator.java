@@ -1,39 +1,34 @@
 package br.estudo.calculadora;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.nio.channels.NonWritableChannelException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Calculator extends JFrame {
 	JLabel outputLabel;
-	
-	
+	JLabel resultLabel;
 	JPanel buttonsPanel;
 	JButton[] jbnButtons;
 	
 	public Calculator() {
-		setSize(400, 500);
+		setSize(350, 200);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		
-		
-		
-		setLayout(new GridLayout(3, 3));
+		setLayout(new BorderLayout());
 	
 		outputLabel = new JLabel();
 		outputLabel.setText("Output here");
-		
+		outputLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		buttonsPanel = new JPanel();
 		buttonsPanel.setSize(200, 200);
-		buttonsPanel.setLayout(new GridLayout(5, 5));
-		jbnButtons = new JButton[24];
+		buttonsPanel.setLayout(new GridLayout(5, 5));	
+		jbnButtons = new JButton[25];
 		
 		// cria os botões de 0 a 9
 		for (int i = 0; i <= 9; i++) {
@@ -60,15 +55,49 @@ public class Calculator extends JFrame {
 		jbnButtons[21] = new JButton(".");
 		jbnButtons[22] = new JButton("%");
 		jbnButtons[23] = new JButton("+");
+		jbnButtons[24] = new JButton("<-");
 		
-		
-		for (int i = 10; i <= 14; i++) {
+		// C, (, ), mod, <-
+		for (int i = 10; i <= 13; i++) {
 			buttonsPanel.add(jbnButtons[i]);
 		}
-				
 		
-		add(outputLabel);
-		add(buttonsPanel);
+		buttonsPanel.add(jbnButtons[24]); // <-
+		
+		// 7, 8, 9, /, sqrt
+		for (int i = 7; i <= 9; i++) {
+			buttonsPanel.add(jbnButtons[i]);
+		}
+		
+		buttonsPanel.add(jbnButtons[15]);
+		buttonsPanel.add(jbnButtons[16]);
+		
+		// 4, 5, 6, x, x^2
+		for (int i = 4; i <= 6; i++) {
+			buttonsPanel.add(jbnButtons[i]);
+		}
+		
+		buttonsPanel.add(jbnButtons[17]);
+		buttonsPanel.add(jbnButtons[18]);
+				
+		// 1, 2, 3, -, =
+		for (int i = 1; i <=3; i++) {
+			buttonsPanel.add(jbnButtons[i]);
+		}
+		
+		buttonsPanel.add(jbnButtons[19]);
+		buttonsPanel.add(jbnButtons[20]);
+		
+		// 0, ., %, +, =, PI
+		
+		buttonsPanel.add(jbnButtons[0]);
+		buttonsPanel.add(jbnButtons[21]);
+		buttonsPanel.add(jbnButtons[22]);
+		buttonsPanel.add(jbnButtons[23]);
+		buttonsPanel.add(jbnButtons[14]);
+		
+		add(outputLabel, BorderLayout.LINE_END);
+		add(buttonsPanel, BorderLayout.SOUTH);
 		
 		setVisible(true);
 		
