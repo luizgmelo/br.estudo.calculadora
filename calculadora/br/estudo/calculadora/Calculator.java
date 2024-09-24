@@ -22,7 +22,7 @@ public class Calculator extends JFrame {
 		setLayout(new BorderLayout());
 	
 		outputLabel = new JLabel();
-		outputLabel.setText("Output here");
+		outputLabel.setText("");
 		outputLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		buttonsPanel = new JPanel();
@@ -104,6 +104,16 @@ public class Calculator extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new Calculator();
+		new CalculatorController(new Calculator());
 	}
+
+	public JButton[] getJbnButtons() {
+		return jbnButtons;
+	}
+
+	public JLabel getOutputLabel() {
+		return outputLabel;
+	}
+	
+	
 }
